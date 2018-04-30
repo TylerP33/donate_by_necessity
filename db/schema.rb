@@ -10,26 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_30_202701) do
+ActiveRecord::Schema.define(version: 2018_04_30_203446) do
 
   create_table "categories", force: :cascade do |t|
     t.integer "toilet_paper"
     t.integer "dental_hygiene"
     t.integer "first_aid"
     t.integer "general_hygiene"
-    t.integer "diaper"
     t.integer "underwear_socks"
     t.integer "blankets"
     t.integer "school_supplies"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "diapers"
   end
 
   create_table "donors", force: :cascade do |t|
     t.string "email"
-    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end
