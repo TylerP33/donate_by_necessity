@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  toilet_paper: 1
+  dental_hygiene: 1
+  first_aid: 1
+  general_hygiene: 1
+  diaper: 1
+  underwear_socks: 1
+  blankets: 1
+  school_supplies: 1
+
+two:
+  toilet_paper: 1
+  dental_hygiene: 1
+  first_aid: 1
+  general_hygiene: 1
+  diaper: 1
+  underwear_socks: 1
+  blankets: 1
+  school_supplies: 1
