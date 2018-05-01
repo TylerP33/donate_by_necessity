@@ -5,11 +5,12 @@ class DonorsController < ApplicationController
 
 	def create
 		@donor = Donor.new(donor_params)
-	if @donor.save
-		session[:donor_id] = @donor.id
-		redirect_to root_path
-	else
-		render :new
+		if @donor.save
+			session[:user_id] = @donor.id
+			redirect_to welcome_donor_path
+		else
+			render :new
+		end
 	end
 
 	private 
