@@ -4,7 +4,7 @@ class DonorsController < ApplicationController
 	end
 
 	def create
-	@donor = Donor.new(donor_params)
+		@donor = Donor.new(donor_params)
 	if @donor.save
 		session[:donor_id] = @donor.id
 		redirect_to root_path
@@ -15,6 +15,6 @@ class DonorsController < ApplicationController
 	private 
 	
 	def donor_params
-		params.require(:donor).permit(:email, :password)
+		params.require(:donor).permit(:email, :password, :password_confirmation)
 	end
 end
