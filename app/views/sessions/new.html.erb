@@ -1,0 +1,16 @@
+<h1>Login to see your donor profile</h1>
+
+<% if alert %>
+  <p class="alert-danger"><%= flash[:alert] %></p>
+<% end %>
+
+<%= form_tag sessions_path do %>
+  <%= label_tag :email %>
+  <%= text_field_tag :email, '', placeholder: "Login with your email", size: 30 %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password, '', placeholder: "(hidden)", size: 30 %>
+  <br>
+  <br>
+  <%= submit_tag "Log In" %>
+<% end %>
+<br><br>
