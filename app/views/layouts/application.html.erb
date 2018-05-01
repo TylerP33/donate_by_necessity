@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Donate by Necessity</title>
+    <%= yield %>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
@@ -16,7 +17,6 @@
       <% end %>
     </div>
     <div>
-    <%= yield %>
     </div>
   </body>
 </html>
