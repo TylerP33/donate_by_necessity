@@ -12,6 +12,9 @@ class DonorsController < ApplicationController
 		render :new
 	end
 
-	private donor_params
+	private 
+	
+	def donor_params
 		params.require(:donor).permit(:email, :password)
+	end
 end

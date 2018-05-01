@@ -9,11 +9,12 @@ class ApplicationController < ActionController::Base
 
   def redirect_if_not_logged_in
    	if !logged_in?
-    	redirect_to login_path, alert: "Please login to access your donor pag"
+    	redirect_to login_path, alert: "Please login to access your donor page"
+    end
   end
 
   def logged_in?
-    !!current_user                #
+    !!current_user                
   end
 
 end

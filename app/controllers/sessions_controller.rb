@@ -1,9 +1,10 @@
 class SessionsController < ApplicationController
+	
 	def create
 		donor = Donor.from_omniauth(env["omniauth.auth"])
     	session[:user_id] = donor.id
     	redirect_to root_path
-  end
+  	end
 
 	def destroy
     	session[:user_id] = nil
