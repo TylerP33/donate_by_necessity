@@ -1,0 +1,22 @@
+<h2> Welcome to your Donor Interface, <%= current_user.email %> <h2>
+
+<%= link_to "Add a new recipient here", new_recipient_path %><br><br><br>
+
+<h2>Your added Recipients</h2><br><br>
+<% @recipients.each do |recipient| %>
+	<%= recipient.first_name %>
+<% end %>
+<h2>Search for other recipients in need!</h2><br><br>
+<h2>Donate by category</h2><br><br>
+<h2>Your total donations</h2><br><br>
+
+
+
+
+
+
+
+
+
+
+
