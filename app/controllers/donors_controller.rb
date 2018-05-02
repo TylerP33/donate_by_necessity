@@ -1,4 +1,10 @@
 class DonorsController < ApplicationController
+
+	def donor_home
+		@recipients = Recipient.all
+	end 
+
+
 	def new
 		@donor = Donor.new
 	end
@@ -7,7 +13,7 @@ class DonorsController < ApplicationController
 		@donor = Donor.new(donor_params)
 		if @donor.save
 			session[:user_id] = @donor.id
-			redirect_to welcome_donor_path
+			redirect_to donor_interface_path
 		else
 			render :new
 		end

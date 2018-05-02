@@ -1,6 +1,38 @@
-<%= form_for(@recipient) do |f| %>
+<%= form_for([@recipient, @category]) do |f| %>
 
   <div class="form-group">
+    <%= f.label :toilet_paper %><br>
+    <%= f.text_field :toilet_paper, class: "form-control" %></div>
+
+  <div class="form-group">
+    <%= f.label :dental_hygiene%><br>
+    <%= f.text_field :dental_hygiene, class: "form-control" %></div>
+
+  <div class="form-group">
+    <%= f.label :first_aid %><br>
+    <%= f.text_field :first_aid, class: "form-control" %></div>
+
+  <div class="form-group">
+    <%= f.label :general_hygiene %><br>
+    <%= f.text_field :general_hygiene, class: "form-control" %></div>
+
+  <div class="form-group">
+    <%= f.label :underwear_socks %><br>
+    <%= f.text_field :underwear_socks, class: "form-control" %></div>
+
+  <div class="form-group">
+    <%= f.label :blankets%><br>
+    <%= f.text_field :blankets, class: "form-control" %></div>
+
+  <div class="form-group">
+    <%= f.label :school_supplies %><br>
+    <%= f.text_field :school_supplies, class: "form-control" %></div>
+
+  <div class="form-group">
+    <%= f.label :diapers %><br>
+    <%= f.text_field :diapers, class: "form-control" %></div>
+
+<div class="form-group">
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name, class: "form-control" %></div>
 
@@ -20,12 +52,7 @@
     <%= f.label :personal_notes %><br>
     <%= f.text_area :personal_notes, :cols => "10", :rows => "10", class: "form-control" %></div>
 
-  <div class="form-group">
-    <%= f.label :urgent_needs %><br>
-    <%= f.check_box :urgent_needs, :cols => "10", :rows => "10", class: "form-control" %></div>
-
-
-  <div class="actions">
-    <%= f.submit class: "btn btn-primary" %>
+<div class="actions">
+    <%= f.submit  %>
   </div>
 <% end %>
