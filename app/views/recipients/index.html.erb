@@ -1,0 +1,8 @@
+<h2>Here is a list of all active recipients</h2><br>
+	<% @recipients.each do |recipient| %>
+	<%= link_to recipient.first_name, recipient_path(recipient) %><br><br>
+	<%= recipient.last_name %><br><br>
+	<%= recipient.location %><br><br>
+	<%= recipient.personal_notes %><br><br>
+	<%= recipient.donor_id %><br><br>
+<% end %>
