@@ -1,12 +1,20 @@
+<h2><%= "#{@recipient.first_name} Personal Info" %></h2>
+<%= @recipient.first_name %><br><br>
+<%= @recipient.last_name %><br><br>
+<%= @recipient.location %><br><br>
+<%= @recipient.personal_notes %><br><br>
 
-<% current_user.recipients.each do |recipient| %>
-	<h2><%= "#{recipient.first_name}'s Personal Info" %></h2>
-	<%= recipient.first_name %><br><br>
-	<%= recipient.last_name %><br><br>
-	<%= recipient.location %><br><br>
-	<%= recipient.personal_notes %><br><br>
-	<%= recipient.donor_id %><br><br>
-<% end %>
+<h2>Donation Categories</h2>
+	
+
+
+<%= render "categories/form", :category => @category %>
+
+
+
+
+
+
 
 
 
