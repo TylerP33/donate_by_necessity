@@ -11,10 +11,10 @@ Rails.application.routes.draw do
   root to: "home#show"
 
   resources :donors
-  resources :recipients
+  resources :recipients, param: :last_name
 
-  resources :categories do
-    resources :recipients
+  resources :categories, only: [:show] do
+    resources :recipients, only: [:show, :index]
   end
 
 

@@ -1,17 +1,24 @@
 class RecipientsController < ApplicationController
 
-	before_action :set_category, only: [:show, :edit, :update, :destroy]
+	def index
+		@recipients = Recipient.all
+	end
+
 
 	def new
 		@recipient = Recipient.new
-	end 
+	end
+
+	def show
+		@recipient = Recipient.find_by(last_name: params[:last_name])
+	end
 
 	def edit
 
 	end 
 
 	def create
-		@recipient = Category.recipients.build(recipient_params)
+		@recipient = Category.new.recipients.build(recipient_params)
 		@recipient[:donor_id] = current_user.id
 		respond_to do |format|
 		if @recipient.save
@@ -24,10 +31,6 @@ class RecipientsController < ApplicationController
 	end
 
 	private 
-
-	def set_category
-		@category = Category.find(params[:category_id])
-	end
 
 	def recipient_params
 		params.require(:recipient).permit(
