@@ -1,14 +1,58 @@
-<h2> Welcome to your Donor Interface, <%= current_user.email %> <h2>
+<h2> Welcome to your Donor Interface, <%= current_user.email %> </h2>
+<%= link_to "All availiable recipients", recipients_path %>
+<br>
+<br>
 
-<%= link_to "Add a new recipient here", new_recipient_path %><br><br><br>
+<%= link_to "Create a new recipient here", new_recipient_path %><br><br>
 
-<h2>Your added Recipients</h2><br><br>
-<% @recipients.each do |recipient| %>
+<h2>Here is a list of the recipients you have added</h2>
+<% current_user.recipients.each do |recipient| %>
 	<%= recipient.first_name %>
+	<%= recipient.last_name %><br><br>
+	<%= recipient.location %><br><br>
+	<%= recipient.personal_notes %><br><br>
+	<%= link_to "To donate to #{recipient.first_name} please click here", recipient_path(recipient) %><br><br><br>
 <% end %>
-<h2>Search for other recipients in need!</h2><br><br>
-<h2>Donate by category</h2><br><br>
-<h2>Your total donations</h2><br><br>
+<br>
+<br>
+<h2>Website wide - Total Donations Per Category</h2>
+
+	<table>
+  <tr>
+    <th>Toilet Paper</th>
+    <th>Diapers</th>
+    <th>Dental Hygiene</th>
+    <th>First Aid</th>
+    <th>General Hygiene</th>
+    <th>Underwear and Socks</th>
+    <th>Blankets</th>
+    <th>School Supplies</th>
+  </tr>
+
+  <tr>
+  	<td>$<%= @category.toilet_paper_totals %></td>
+  	<td>$<%= @category.diaper_totals %></td>
+  	<td>$<%= @category.dental_hygiene_totals %></td>
+  	<td>$<%= @category.first_aid_totals %></td>
+  	<td>$<%= @category.general_hygiene_totals %></td>
+  	<td>$<%= @category.underwear_socks_totals %></td>
+  	<td>$<%= @category.blankets_totals %></td>
+  	<td>$<%= @category.school_supplies_totals %></td>
+
+
+ </table>
+<br>
+<br>
+<h2>Website Wide - Running Total for all Donations</h2>
+$<%= @category.total_web_donations %>
+<br>
+<br>
+
+
+
+
+
+
 
 
 
