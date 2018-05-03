@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   resources :donors
   resources :recipients, param: :last_name
 
-  resources :categories, only: [:show] do
-    resources :recipients, only: [:show, :index]
+  resources :categories do
+    resources :recipients
   end
 
 

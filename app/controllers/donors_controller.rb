@@ -1,8 +1,8 @@
 class DonorsController < ApplicationController
 
 	def donor_home
-		@recipients = Recipient.all
-	end 
+		@category = Category.all
+	end
 
 
 	def new
