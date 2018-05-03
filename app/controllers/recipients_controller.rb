@@ -4,13 +4,13 @@ class RecipientsController < ApplicationController
 		@recipients = Recipient.all
 	end
 
-
 	def new
 		@recipient = Recipient.new
 	end
 
 	def show
 		@recipient = Recipient.find_by(last_name: params[:last_name])
+		@category = Category.new
 	end
 
 	def edit
@@ -25,7 +25,7 @@ class RecipientsController < ApplicationController
 			 format.html { redirect_to donor_interface_path, notice: 'Recipient was successfully created.' }
 		else
 			puts @recipient.errors.inspect
-			 format.html { render 'recipients/new'}
+			 format.html { render :new }
 		end
 	  end
 	end

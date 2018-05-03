@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       	if donor && donor.authenticate(params[:password])
         	session[:user_id] = donor.id
         	redirect_to donor_interface_path
-      	else
+      	else;
         	redirect_to donor_interface_path
      	 end
        end
