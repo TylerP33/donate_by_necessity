@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_01_203308) do
+ActiveRecord::Schema.define(version: 2018_05_07_183228) do
 
   create_table "categories", force: :cascade do |t|
     t.integer "toilet_paper"
