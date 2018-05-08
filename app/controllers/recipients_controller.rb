@@ -5,7 +5,7 @@ class RecipientsController < ApplicationController
 	end
 
 	def show
-		@recipient = Recipient.find_by(params[:id])
+		@recipient = current_user.recipients.find_by(params[:id])
 	end
 
 	def edit
@@ -30,7 +30,7 @@ class RecipientsController < ApplicationController
 	end
 
 	def update
-		@category = Category.find_by(id: params[:id])
+		@category = Category.find(params[:id])
 		@recipient = @category.recipients.find(params[:id])
 		if @recipient.update(recipient_params)
 			@recipient.update(recipient_params)
@@ -41,8 +41,7 @@ class RecipientsController < ApplicationController
 	end
 
 	def destroy
-		@category = Category.find_by(id: params[:id])
-		@recipient = @category.recipients.find(params[:id])
+		@recipient = current_user.recipients.find(params[:id])
 		@recipient.destroy
 		redirect_to donor_interface_path
 	end 

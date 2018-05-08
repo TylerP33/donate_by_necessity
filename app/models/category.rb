@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-	has_many :recipients
+	has_many :recipients, dependent: :destroy
 	has_many :donors, through: :recipients
 
 

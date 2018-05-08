@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
 	end 
 
 	def create
-		@category = Category.new(category_params)
+		@category = current_user.categories.new(category_params)
 		if @category.save
 			@category.recipients.find_or_create_by(donor_id: current_user.id, category_id: @category.id)
 			redirect_to category_url(@category)
@@ -19,19 +19,6 @@ class CategoriesController < ApplicationController
 			render 'categories/_form', alert: "Your donation was not saved."
 		end
 	end
-
-	def edit
-		@category = Category.find_by(params[:donor_id])
-	end
-
-	def update
-		@category = Category.find_by(params[:donor_id])
-		if @category.update(category_params)
-			redirect_to donor_interface_path
-		else
-			render :edit
-		end
-	end 
 
 	private
 

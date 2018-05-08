@@ -4,7 +4,6 @@
 <br>
 <br>
 <br> 
-
 <html>
 <head>
 <style>
@@ -20,7 +19,6 @@ th, td {
 </style>
 </head>
 <body>
-
 <h2>Your Recipient List</h2>
 <p>To update or delete a recipient, just click on the their first name!</p>
 <% current_user.recipients.each do |recipient| %>
@@ -34,27 +32,26 @@ th, td {
     <td><%= recipient.last_name %></td>
   </tr>
   <tr>
-    <th>location</th>
+    <th>Location</th>
     <td><%= recipient.location %></td>
   </tr>
   <tr>
-    <th>gender</th>
+    <th>Gender</th>
     <td><%= recipient.gender %></td>
   </tr>
   <tr>
-    <th>personal_notes</th>
+    <th>Personal_notes</th>
     <td><%= recipient.personal_notes %></td>
   </tr>
   <tr>
     <th>Total Donation per Recipient</th>
-    <td>Total Donation.toilet_paper</td>
+    <td><%= recipient.category.school_supplies %></td>
   </tr>
   </table>
   <% end %>
 </table>
 </body>
 </html>
-
 <h2>Website Donation Tracker By Category!</h2>
 	<table>
   <tr>
@@ -67,7 +64,6 @@ th, td {
     <th>Blankets</th>
     <th>School Supplies</th>
   </tr>
-
   <tr>
   	<td>$<%= @categories.toilet_paper_totals %></td>
   	<td>$<%= @categories.diaper_totals %></td>
@@ -77,9 +73,7 @@ th, td {
   	<td>$<%= @categories.underwear_socks_totals %></td>
   	<td>$<%= @categories.blankets_totals %></td>
   	<td>$<%= @categories.school_supplies_totals %></td>
-
-
- </table>
+</table>
 <br>
 <br>
 <h2>Website Donation Tracker!</h2>

@@ -12,9 +12,8 @@ Rails.application.routes.draw do
   resource :home, only: [:show]
   root to: "home#show"
 
-  resources :donors
-  resources :categories
-  resources :recipients, param: :last_name
+  resources :donors, only: [:new, :create]
+  resources :recipients
 
 
   resources :categories do
