@@ -1,5 +1,9 @@
+<p>To add a personal recipient of your choosing, fill out the form and click "Add Recipient"</p>
+
+<p>If you would like to donate to a category without a stated recipient, fill out the form and click <%= link_to "click here", donor_interface_path %></p>
 <%= form_for(@category) do |f| %>
-  <div class="form-group">
+
+<div class="form-group">
     <%= f.label :toilet_paper %><br>
     <%= f.text_field :toilet_paper, class: "form-control" %></div>
 
@@ -32,7 +36,7 @@
     <%= f.text_field :diapers, class: "form-control" %></div><br>
 
     <div class="actions">
-    <%= f.submit  %>
+    <%= f.button "Add Recipient", type: 'submit' %>
 
 </div>
   <% end %>

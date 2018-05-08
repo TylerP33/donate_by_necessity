@@ -2,18 +2,18 @@ class Category < ApplicationRecord
 	has_many :recipients
 	has_many :donors, through: :recipients
 
-	validates :toilet_paper, presence: true
 
 	def self.total_web_donations
 		total = self.toilet_paper_totals + self.diaper_totals + self.dental_hygiene_totals + self.first_aid_totals + self.general_hygiene_totals + self.underwear_socks_totals + self.blankets_totals + self.school_supplies_totals
-
 	end
-	
-
 
 	def self.toilet_paper_totals
 		Category.sum(:toilet_paper)
 	end
+
+	 def self.donor_tp_donations
+    	Category.joins(:donors).select("categories.toilet_paper, donors.id").where(categories: {recipient_id: [:recipient_id]})
+  	end   
 
 	def self.diaper_totals
 		Category.sum(:diapers)
