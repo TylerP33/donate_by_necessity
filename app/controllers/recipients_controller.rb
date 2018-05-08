@@ -5,7 +5,7 @@ class RecipientsController < ApplicationController
 	end
 
 	def show
-		@recipient = current_user.recipients.find_by(params[:id])
+		@recipient = current_user.recipients.find_by(category_id: params[:category_id])
 	end
 
 	def edit
@@ -26,7 +26,7 @@ class RecipientsController < ApplicationController
 	end
 
 	def edit
-		@recipient = Recipient.find_by(id: params[:id])
+		@recipient = current_user.recipients.find_by(params[:id])
 	end
 
 	def update
