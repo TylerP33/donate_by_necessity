@@ -14,6 +14,5 @@ class Donor < ApplicationRecord
     self.where(email: auth_hash["info"]["email"]).first_or_create do |donor|
       donor.password = SecureRandom.hex
     end
-  end
-
+  end 
 end

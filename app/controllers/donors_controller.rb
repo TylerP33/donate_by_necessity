@@ -1,7 +1,6 @@
-class DonorsController < ApplicationController
-
+class DonorsController < ApplicationController	
 	def donor_home
-		@category = Category.all
+		@categories = Category.all
 	end
 
 
