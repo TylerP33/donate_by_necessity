@@ -11,10 +11,6 @@ class Category < ApplicationRecord
 		Category.sum(:toilet_paper)
 	end
 
-	 def self.donor_tp_donations
-    	Category.joins(:donors).select("categories.toilet_paper, donors.id").where(categories: {recipient_id: [:recipient_id]})
-  	end   
-
 	def self.diaper_totals
 		Category.sum(:diapers)
 	end

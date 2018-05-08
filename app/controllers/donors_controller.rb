@@ -1,8 +1,6 @@
 class DonorsController < ApplicationController	
 	def donor_home
 		@categories = Category.all
-		@category = Category.find_by(id: params[:id])
-    	@recipient = Recipient.find_by(id: params[:id])
 	end
 
 
