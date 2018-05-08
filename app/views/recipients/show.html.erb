@@ -4,11 +4,13 @@
 <%= @recipient.location %><br><br>
 <%= @recipient.personal_notes %><br><br>
 
-<h2>Donation Categories</h2>
-	
+<h2>Personal notes may give suggestions as to what the recipient is in need for.  Please be sure to read!</h2>
+
+<%= render 'categories/form' %>
+<br>
+<br>
 
 
-<%= render "categories/form", :category => @category %>
 
 
 

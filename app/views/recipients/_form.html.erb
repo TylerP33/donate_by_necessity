@@ -1,4 +1,10 @@
-<%= form_for(@recipient) do |f| %>
+<%= form_for([@category, @recipient]) do |f| %>
+
+<div class="form-group">
+    <%= f.hidden_field :donor_id, class: "form-control" %></div>
+
+<div class="form-group">    
+    <%= f.hidden_field :category_id, class: "form-control" %></div>
 
 <div class="form-group">
     <%= f.label :first_name %><br>
@@ -19,6 +25,8 @@
   <div class="form-group">
     <%= f.label :personal_notes %><br>
     <%= f.text_area :personal_notes, :cols => "10", :rows => "10", class: "form-control" %></div>
+
+    
 
 <div class="actions">
     <%= f.submit  %>
