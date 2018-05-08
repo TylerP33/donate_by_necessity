@@ -1,4 +1,4 @@
-<h2> Welcome to your Donor Interface, <%= current_user.email %> </h2>
+<h2> Welcome to your Donor Interface, <%= current_user.email %>!.  Currently, you have donated </h2>
 
 <%= link_to "Your Donating Journey begins here!", new_category_path(@category) %>
 <br>
@@ -45,7 +45,7 @@ th, td {
   </tr>
   <tr>
     <th>Total Donation per Recipient</th>
-    <td><%= recipient.category.school_supplies %></td>
+    <td><%= recipient.category.toilet_paper || recipient.category.dental_hygiene || recipient.category.diapers || recipient.category.general_hygiene || recipient.category.first_aid || recipient.category.school_supplies || recipient.category.blankets || recipient.category.underwear_socks %> </td> 
   </tr>
   </table>
   <% end %>
