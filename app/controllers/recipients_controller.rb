@@ -29,6 +29,19 @@ class RecipientsController < ApplicationController
 	  end
 	end
 
+	def edit
+		@recipient = Recipient.find_by(id: params[:id])
+
+	def update
+		@recipient = @category.recipients.find(params[:id])
+		if @recipient.update(recipient_params)
+			@recipient.update(recipient_params)
+			redirect_to donor_interface_path
+		else
+			render :edit
+		end
+	end
+
 	private 
 
 	def recipient_params
