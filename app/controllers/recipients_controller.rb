@@ -10,7 +10,6 @@ class RecipientsController < ApplicationController
 
 	def show
 		@recipient = Recipient.find_by(last_name: params[:last_name])
-		@category = Category.new
 	end
 
 	def edit
@@ -18,13 +17,13 @@ class RecipientsController < ApplicationController
 	end 
 
 	def create
-		@recipient = Category.new.recipients.build(recipient_params)
+		@category = Category.find(params[:category_id])
+		@recipient = @category.recipients.build(recipient_params)
 		@recipient[:donor_id] = current_user.id
 		respond_to do |format|
 		if @recipient.save
 			 format.html { redirect_to donor_interface_path, notice: 'Recipient was successfully created.' }
 		else
-			puts @recipient.errors.inspect
 			 format.html { render :new }
 		end
 	  end
@@ -39,10 +38,13 @@ class RecipientsController < ApplicationController
 			:location,
 			:gender,
 			:personal_notes,
-			:category_id
+			:category_id,
+			:donor_id
 			)
 	end
 
 end
+
+
 
 
