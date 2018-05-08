@@ -1,15 +1,11 @@
 class RecipientsController < ApplicationController
 
-	def index
-		@recipients = Recipient.all
-	end
-
 	def new
 		@recipient = Recipient.new
 	end
 
 	def show
-		@recipient = Recipient.find_by(last_name: params[:last_name])
+		@recipient = Recipient.find_by(params[:id])
 	end
 
 	def edit
@@ -31,8 +27,10 @@ class RecipientsController < ApplicationController
 
 	def edit
 		@recipient = Recipient.find_by(id: params[:id])
+	end
 
 	def update
+		@category = Category.find_by(id: params[:id])
 		@recipient = @category.recipients.find(params[:id])
 		if @recipient.update(recipient_params)
 			@recipient.update(recipient_params)
@@ -41,6 +39,13 @@ class RecipientsController < ApplicationController
 			render :edit
 		end
 	end
+
+	def destroy
+		@category = Category.find_by(id: params[:id])
+		@recipient = @category.recipients.find(params[:id])
+		@recipient.destroy
+		redirect_to donor_interface_path
+	end 
 
 	private 
 

@@ -4,9 +4,9 @@
 <%= @recipient.location %><br><br>
 <%= @recipient.personal_notes %><br><br>
 
-<h2>Personal notes may give suggestions as to what the recipient is in need for.  Please be sure to read!</h2>
+<%= button_to "Edit", edit_category_recipient_path(@recipient.category, @recipient), method: :get %><br>
+<%= button_to "Delete", category_recipient_path(@recipient.category, @recipient), method: "delete", class: "destroy" %>
 
-<%= render 'categories/form' %>
 <br>
 <br>
 

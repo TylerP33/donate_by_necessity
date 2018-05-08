@@ -21,13 +21,13 @@ th, td {
 </head>
 <body>
 
-<h2>Your total Donations per Category</h2>
-<p>To update a recipient, just click on the their first name!</p>
+<h2>Your Recipient List</h2>
+<p>To update or delete a recipient, just click on the their first name!</p>
 <% current_user.recipients.each do |recipient| %>
 <table style="width:100%">
   <tr>
     <th>First Name:</th>
-    <td><%= recipient.first_name %></td>
+    <td><%= link_to recipient.first_name, category_recipient_path(recipient.category, recipient) %></td>
   </tr>
   <tr>
     <th>Last Name:</th>
