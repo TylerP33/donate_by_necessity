@@ -1,9 +1,9 @@
-<h2> Welcome to your Donor Interface, <%= current_user.email %>!.  Currently, you have donated </h2>
+<h2> Welcome to your Donor Interface, <%= current_user.email %>!<h2>
+<p> Currently, you have donated: </p>
 
 <%= link_to "Your Donating Journey begins here!", new_category_path(@category) %>
 <br>
 <br>
-<br> 
 <html>
 <head>
 <style>
@@ -52,6 +52,8 @@ th, td {
 </table>
 </body>
 </html>
+<br>
+<br>
 <h2>Website Donation Tracker By Category!</h2>
 	<table>
   <tr>
