@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
 	end 
 
 	def create
-		@category = current_user.categories.new(category_params)
+		@category = Category.new(category_params)
 		if @category.save
 			@category.recipients.find_or_create_by(donor_id: current_user.id, category_id: @category.id)
 			redirect_to category_url(@category)
