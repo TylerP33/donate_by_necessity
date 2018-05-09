@@ -1,4 +1,4 @@
-<h1>Signup</h1>
+<h2>Signup</h2>
 <%= form_for @donor do |f| %>
  <% if @donor.errors.any? %>
     <div id="error_explanation">
@@ -14,11 +14,13 @@
     </div>
   <% end %>
 
-  <%= f.label :email %>
-  <%= f.text_field :email%><br><br>
-  <%= f.label :password %>
-  <%= f.password_field :password, placeholder: "(hidden)" %><br><br>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, placeholder: "(hidden)" %><br><br>
-  <%= f.submit %>
+  <%= f.label :email %><br>
+  <%= f.text_field :email%><br>
+  <%= f.label :password %><br>
+  <%= f.password_field :password, placeholder: "(hidden)" %><br>
+  <%= f.label :password_confirmation %><br>
+  <%= f.password_field :password_confirmation, placeholder: "(hidden)" %><br><br><Br>
+  <%= f.submit %><br><br>
 <% end %>
+
+<%= link_to "Back to Home Page", home_show_path %>
