@@ -1,11 +1,10 @@
 class RecipientsController < ApplicationController
 
-	def new
-		@recipient = Recipient.new
-	end
+	before_action :redirect_if_not_logged_in
+	before_action :set_recipient, only: [:show, :edit, :update, :destroy]
 
 	def show
-		@recipient = Recipient.find_by(id: params[:id])
+
 	end
 
 	def create
@@ -22,7 +21,11 @@ class RecipientsController < ApplicationController
 	end
 
 	def edit
-		@recipient = Recipient.find_by(id: params[:id])
+		if @recipient.donor == current_user
+			render :edit
+		else
+			redirect_to donor_interface_path, alert: "Error: That was not your recipient! Record not updated!"
+		end
 	end
 
 	def update
@@ -36,9 +39,12 @@ class RecipientsController < ApplicationController
 	end
 
 	def destroy
-		@recipient = current_user.recipients.find_by(category_id: params[:category_id])
-		@recipient.destroy
-		redirect_to donor_interface_path
+		if @recipient.donor == current_user
+		   @recipient.destroy
+		    redirect_to donor_interface_path
+		else
+		    redirect_to donor_interface_path, alert: "Error: That was not your recipient! Record not deleted!"
+		end
 	end 
 
 	private 
@@ -53,6 +59,10 @@ class RecipientsController < ApplicationController
 			:category_id,
 			:donor_id
 			)
+	end
+
+	def set_recipient
+		@recipient = Recipient.find_by(id: params[:id])
 	end
 
 end

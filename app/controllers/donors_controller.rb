@@ -1,4 +1,5 @@
 class DonorsController < ApplicationController	
+	
 	def donor_home
 		@categories = Category.all
 		@total_website_donations = Category.total_donations

@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+	before_action :redirect_if_not_logged_in
 
 	def new
 		@category = current_user.categories.new
@@ -16,7 +17,7 @@ class CategoriesController < ApplicationController
 			@category.recipients.find_or_create_by(donor_id: current_user.id, category_id: @category.id)
 			redirect_to category_url(@category)
 		else
-			render :new, alert: "Your donation was not saved."
+			render :new
 		end
 	end
 

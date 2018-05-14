@@ -1,3 +1,7 @@
+<% if alert %>
+  <h1><p class="alert-danger"><%= flash[:alert] %></p></h1>
+<% end %>
+
 <h2> Welcome to your Donor Interface, <%= current_user.email %>!</h2>
 <%= link_to "Donate Here", new_category_path(@category) %><br><br>
 <%= link_to "Click here to see YOUR total donations", categories_total_user_donation_path %>
