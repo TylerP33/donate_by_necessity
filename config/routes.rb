@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     resources :recipients
   end
 
+  get "/total_user_donations", to: "categories#total_user_donation", as: "categories/total_user_donation"
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

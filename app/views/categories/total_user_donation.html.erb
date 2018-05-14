@@ -1,0 +1,44 @@
+<h2>Your Total Donations: $<%= @total_user_donation %></h2>
+
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    table-layout:fixed;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+</style>
+</head>
+<body>
+	<% current_user.categories.each do |cat| %>
+<table style="width:100%">
+  <tr>
+  	<th>Donation Count</th>
+    <th>Toilet Paper</th>
+    <th>Diapers</th>
+    <th>Dental Hygiene</th>
+    <th>First Aid</th>
+    <th>General Hygiene</th>
+    <th>Underwear and Socks</th>
+    <th>Blankets</th>
+    <th>School Supplies</th>
+  </tr>
+<tr>
+	<td><%= cat.id %></td>
+	<td>$<%= cat.toilet_paper %></td>
+	<td>$<%= cat.diapers %></td>
+	<td>$<%= cat.dental_hygiene %></td>
+	<td>$<%= cat.first_aid %></td>
+	<td>$<%= cat.general_hygiene %></td>
+	<td>$<%= cat.underwear_socks %></td>
+	<td>$<%= cat.blankets %></td>
+	<td>$<%= cat.school_supplies %></td>
+</tr>
+</table>
+<% end %>
+<br>

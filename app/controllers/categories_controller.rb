@@ -20,6 +20,11 @@ class CategoriesController < ApplicationController
 		end
 	end
 
+	def total_user_donation
+		@categories = current_user.categories
+		@total_user_donation = Category.total_user_donation(current_user)
+	end
+
 	private
 
 		def category_params
@@ -31,7 +36,6 @@ class CategoriesController < ApplicationController
 				:underwear_socks,
 				:blankets,
 				:school_supplies,
-				:recipient_id,
 				:diapers
 				) 
 	end
