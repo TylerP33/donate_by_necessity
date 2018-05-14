@@ -1,5 +1,17 @@
 <%= form_for([@category, @recipient]) do |f| %>
 
+<% if @recipient.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@recipient.errors.count, "error") %>Error</h2>
+
+    <ul>
+    <% @recipient.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="form-group">
     <%= f.hidden_field :donor_id, class: "form-control" %></div>
 

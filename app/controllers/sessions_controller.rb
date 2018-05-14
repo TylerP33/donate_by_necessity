@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
         	session[:user_id] = donor.id
         	redirect_to donor_interface_path
       	else
+          flash[:alert] = "Error:  Either your password or email is wrong, or we can't find the account.  Please try again!"
         	render "sessions/new"
      	 end
        end

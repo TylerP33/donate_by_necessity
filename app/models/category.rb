@@ -4,6 +4,7 @@ class Category < ApplicationRecord
 	has_many :donors, through: :recipients
 
 	validates :toilet_paper, :dental_hygiene, :first_aid, :general_hygiene, :underwear_socks, :blankets, :school_supplies, :diapers, :numericality => true, :allow_nil => true, format: { with: /\A\d+\z/, message: "Integer only. No sign allowed." }
+	validate :any_present?
 
 	def self.toilet_paper_totals
 		Category.sum(:toilet_paper)
@@ -62,4 +63,13 @@ class Category < ApplicationRecord
         'SUM(diapers)').flatten.compact
         array.inject(0){|sum, x| sum + x}
     end 
+
+
+    private
+
+   	def any_present?
+    	if %w(toilet_paper dental_hygiene first_aid underwear_socks blankets school_supplies diapers).all?{|attr| self[attr].blank?}
+    	errors.add :base, "You must donate to one category!"
+  		end
+	end
 end
