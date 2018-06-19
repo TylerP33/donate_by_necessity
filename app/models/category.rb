@@ -1,9 +1,9 @@
 class Category < ApplicationRecord
-	
+
 	has_many :recipients, dependent: :destroy
 	has_many :donors, through: :recipients
 
-	validates :toilet_paper, :dental_hygiene, :first_aid, :general_hygiene, :underwear_socks, :blankets, :school_supplies, :diapers, :numericality => true, :allow_nil => true, format: { with: /\A\d+\z/, message: "Integer only. No sign allowed." }
+	validates :toilet_paper, :dental_hygiene, :first_aid, :general_hygiene, :underwear_socks, :blankets, :school_supplies, :diapers, :numericality => true, :allow_nil => true, format: { with: /\A\d+\z/, message: "Error - Positive integer only. No sign allowed." }
 	validate :any_present?
 
 	def self.toilet_paper_totals
@@ -68,7 +68,7 @@ class Category < ApplicationRecord
     private
 
    	def any_present?
-    	if %w(toilet_paper dental_hygiene first_aid underwear_socks blankets school_supplies diapers).all?{|attr| self[attr].blank?}
+    	if %w(toilet_paper dental_hygiene general_hygiene first_aid underwear_socks blankets school_supplies diapers).all?{|attr| self[attr].blank?}
     	errors.add :base, "You must donate to one category!"
   		end
 	end

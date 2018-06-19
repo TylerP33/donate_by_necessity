@@ -2,7 +2,7 @@
 
 <% if @donor.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@donor.errors.count, "error") %>Error</h2>
+    <h2><%= pluralize(@donor.errors.count, "error") %></h2>
 
     <ul>
     <% @donor.errors.full_messages.each do |msg| %>

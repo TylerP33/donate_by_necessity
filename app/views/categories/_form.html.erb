@@ -4,7 +4,7 @@
 
 <% if @category.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@category.errors.count, "error") %> Error</h2>
+    <h2><%= pluralize(@category.errors.count, "error") %></h2>
 
     <ul>
     <% @category.errors.full_messages.each do |msg| %>
@@ -47,7 +47,7 @@
     <%= f.text_field :diapers, class: "form-control" %></div><br>
 
     <div class="actions">
-    <%= f.button "Add Recipient", type: 'submit' %>
+    <%= f.button "Add Recipient", type: 'submit' %><br><br>
 
 </div>
   <% end %>

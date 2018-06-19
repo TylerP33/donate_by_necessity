@@ -5,6 +5,10 @@ class DonorsController < ApplicationController
 		@total_website_donations = Category.total_donations
 	end
 
+	def highest_donor
+		@highest = Donor.highest_donor
+	end 
+
 
 	def new
 		@donor = Donor.new

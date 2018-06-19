@@ -4,20 +4,19 @@ class RecipientsController < ApplicationController
 	before_action :set_recipient, only: [:show, :edit, :update, :destroy]
 
 	def show
-
+		@recipient.donor == current_user
 	end
 
 	def create
 		@category = Category.find(params[:category_id])
 		@recipient = @category.recipients.build(recipient_params)
 		@recipient[:donor_id] = current_user.id
-		respond_to do |format|
+		@recipient[:id] = @category.id
 		if @recipient.save
-			 format.html { redirect_to donor_interface_path, notice: 'Recipient was successfully created.' }
+			 redirect_to donor_interface_path, notice: 'Recipient was successfully created.'
 		else
-			 format.html { render :new }
+			 render :_form
 		end
-	  end
 	end
 
 	def edit

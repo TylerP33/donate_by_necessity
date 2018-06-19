@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
   get 'donor_home', to: "donors#donor_home", as: "donor_interface"
+  get 'highest_donor', to: "donors#highest_donor", as: "highest_donor"
 
 
 
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
 
 
   resources :categories do
-    resources :recipients
+    resources :recipients 
   end
 
   get "/total_user_donations", to: "categories#total_user_donation", as: "categories/total_user_donation"

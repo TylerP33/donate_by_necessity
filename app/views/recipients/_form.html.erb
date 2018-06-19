@@ -2,7 +2,7 @@
 
 <% if @recipient.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@recipient.errors.count, "error") %>Error</h2>
+    <h2><%= pluralize(@recipient.errors.count, "error") %></h2>
 
     <ul>
     <% @recipient.errors.full_messages.each do |msg| %>
@@ -45,4 +45,4 @@
   </div>
 <% end %>
 <br>
-<br>
+
