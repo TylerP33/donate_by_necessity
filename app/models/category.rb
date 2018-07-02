@@ -73,3 +73,17 @@ class Category < ApplicationRecord
   		end
 	end
 end
+
+
+    #def self.total_donations
+    	#array = Category.pluck(
+        #'SUM(toilet_paper)',
+        #'SUM(dental_hygiene)',
+        #'SUM(first_aid)',
+        #'SUM(general_hygiene)',
+        #'SUM(underwear_socks)',
+        #'SUM(blankets)',
+        #'SUM(school_supplies)',
+        #'SUM(diapers)').flatten.compact
+        #array.inject(0){|sum, x| sum + x}
+    #end 
