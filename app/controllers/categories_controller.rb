@@ -1,6 +1,9 @@
 class CategoriesController < ApplicationController
 	before_action :redirect_if_not_logged_in
 
+	def index
+		@categories = Category.all
+	end 
 	def new
 		@category = current_user.categories.new
 	end

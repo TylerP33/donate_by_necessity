@@ -14,7 +14,7 @@ th, td {
 </style>
 </head>
  
-<% Category.all.each do |categories| %>
+<% @categories.each do |categories| %>
 	<table style="width:100%">
   <tr>
     <th>Toilet Paper</th>
@@ -37,3 +37,4 @@ th, td {
   	<td>$ <%= categories.school_supplies %></td>
 </table>
 <% end %>
+
