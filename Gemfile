@@ -26,6 +26,7 @@ gem 'bcrypt'
 gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'pry'
 gem 'sidekiq'
+gem 'active_model_serializers'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

@@ -3,7 +3,19 @@ class CategoriesController < ApplicationController
 
 	def index
 		@categories = Category.all
+		render json: @categories.to_json(only: [
+		:id,
+		:toilet_paper,
+		:diapers,
+		:blankets,
+		:dental_hygiene,
+		:first_aid,
+		:general_hygiene,
+		:school_supplies,
+		:underwear_socks
+		])
 	end 
+
 	def new
 		@category = current_user.categories.new
 	end
