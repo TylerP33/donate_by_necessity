@@ -5,17 +5,7 @@ class CategoriesController < ApplicationController
 		@categories = Category.all
 		respond_to do |format|
 		format.html {render :index}
-		format.json {render json: @categories.to_json(only: [
-			:id,
-			:toilet_paper,
-			:diapers,
-			:blankets,
-			:dental_hygiene,
-			:first_aid,
-			:general_hygiene,
-			:school_supplies,
-			:underwear_socks
-		]) }
+		format.json {render json: @categories }
 	    end
 	end 
 
@@ -27,7 +17,8 @@ class CategoriesController < ApplicationController
 		@category = Category.find_by(id: params[:id])
 		@recipient = Recipient.new
 		@categories = @category.recipients
-	end 
+	end
+
 
 	def create
 		@category = Category.new(category_params)
@@ -40,7 +31,6 @@ class CategoriesController < ApplicationController
 	end
 
 	def total_user_donation
-		@categories = current_user.categories
 		@total_user_donation = Category.total_user_donation(current_user)
 	end
 
