@@ -5,6 +5,13 @@ class RecipientsController < ApplicationController
 
 	def show
 		@recipient.donor == current_user
+		@category = Category.find(params[:category_id])
+		@next_recipient = @category.recipients.find_by(category_id: @category.id)
+
+		respond_to do |format|
+		format.html {render :show}
+		format.json {render json: @next_recipient}
+	  end
 	end
 
 	def create
