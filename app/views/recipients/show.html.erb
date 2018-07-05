@@ -6,6 +6,8 @@
 
 <%= button_to "Edit", edit_category_recipient_path(@recipient.category, @recipient), method: :get %><br>
 <%= button_to "Delete", category_recipient_path(@recipient.category, @recipient), method: "delete", class: "destroy" %>
+<br>
+<button class="js-next-recipient">Click here to see more recipients</button><br><br>
 
 <br>
 <br>
