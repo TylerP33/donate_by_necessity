@@ -5,7 +5,7 @@ class CategorySerializer < ActiveModel::Serializer
   	hash = super
   	hash.each { |key, value| 
   		if value.nil?
-  			hash[key] = 0
+  			hash[key] = ""
   		end
   	 }
   	hash
