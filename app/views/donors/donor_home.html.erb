@@ -4,8 +4,8 @@
 
 <h2> Welcome to your Donor Interface, <%= current_user.email %>!</h2>
 <%= link_to "Donate Here", new_category_path(@category) %><br><br>
-<%= link_to "Click here to see YOUR total donations", categories_total_user_donation_path %><br><br>
-<%= link_to "Click here to see the DONOR with most donations", highest_donor_path %>
+<%= link_to "Your Total Donations", categories_total_user_donation_path %><br><br>
+<%= link_to "Highest Donor", highest_donor_path %>
 <br>
 <br>
 <html>
