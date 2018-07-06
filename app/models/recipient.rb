@@ -16,13 +16,10 @@ class Recipient < ApplicationRecord
 
 	def next_recipient
 		donor = self.donor
-
-		nextRecipient = Recipient.where("id > ? AND donor_id = ?", id, donor.id).first
-		if nextRecipient
-			nextRecipient
-		else
-			Recipient.where("donor_id = ?", donor.id).first
-		end
+		next_recipient = Recipient.where("id > ? AND donor_id = ?", id, donor.id).first
+		reset_count = Recipient.where("donor_id = ?", donor.id).first
+		next_recipient ? next_recipient : reset_count
 	end
-	
+
 end
+
