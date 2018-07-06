@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   get "/total_user_donations", to: "categories#total_user_donation", as: "categories/total_user_donation"
-
+  get "/recipients/:id/next", to: "recipients#next"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

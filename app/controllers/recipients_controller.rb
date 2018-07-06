@@ -3,15 +3,29 @@ class RecipientsController < ApplicationController
 	before_action :redirect_if_not_logged_in
 	before_action :set_recipient, only: [:show, :edit, :update, :destroy]
 
+	def index
+		@recipients = current_user.recipients.all
+		respond_to do |format|
+		format.html {render :show}
+		format.json {render json: @recipients}
+	  end
+	end 
+
 	def show
 		@recipient.donor == current_user
-		@category = Category.find(params[:category_id])
+		@category = current_user.categories.find_by(params[:category_id])
 		@next_recipient = @category.recipients.find_by(category_id: @category.id)
 
 		respond_to do |format|
 		format.html {render :show}
 		format.json {render json: @next_recipient}
 	  end
+	end
+
+	def next
+		@recipient = current_user.recipients.find_by(id: params[:id])
+		@next_recipient = @recipient.next_recipient
+		render json: @next_recipient
 	end
 
 	def create

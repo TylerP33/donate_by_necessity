@@ -13,4 +13,16 @@ class Recipient < ApplicationRecord
 			@category.destroy
 		end
 	end
+
+	def next_recipient
+		donor = self.donor
+
+		nextRecipient = Recipient.where("id > ? AND donor_id = ?", id, donor.id).first
+		if nextRecipient
+			nextRecipient
+		else
+			Recipient.where("donor_id = ?", donor.id).first
+		end
+	end
+	
 end
