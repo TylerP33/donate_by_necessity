@@ -8,18 +8,10 @@ $(document).ready(function () {
             });
         });
     });
+
+  
 });
 
-    // assigned to id <tds> but above, although uglier, was the first solution
-    // I came up with, with regards to a dynamic table
-            //$("#id").append(cat.id);
-            //$("#toiletPaper").append(cat.toilet_paper);
-            //$("#diapers").append(cat.diapers);
-            //$("#firstAid").append(cat.first_aid);
-            //$("#generalHygiene").append(cat.general_hygiene);
-            //$("#underwearSocks").append(cat.underwear_socks);
-            //$("#dentalHygiene").append(cat.dental_hygiene);
-            //$("#blankets").append(cat.blankets);
-            //$("#schoolSupplies").append(cat.school_supplies);
+
 
     

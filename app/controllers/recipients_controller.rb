@@ -14,11 +14,11 @@ class RecipientsController < ApplicationController
 	def show
 		@recipient.donor == current_user
 		@category = current_user.categories.find_by(params[:category_id])
-		@next_recipient = @category.recipients.find_by(category_id: @category.id)
+		@category_grabber = current_user.recipients.find_by(id: params[:id])
 
 		respond_to do |format|
 		format.html {render :show}
-		format.json {render json: @next_recipient}
+		format.json {render json: @category_grabber}
 	  end
 	end
 
