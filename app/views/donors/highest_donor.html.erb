@@ -1,3 +1,4 @@
-<% @highest.each do |donor| %>
+<% @highest.each_with_index do |donor, i| %>
+<%= i + 1 %>.
 <%= donor.email %><br><br>
 <% end %>
