@@ -3,24 +3,47 @@ $(document).ready(function () {
   $(".js-all-donations").one('click', function() {
     $.get("/categories.json", function(category) {
         category.forEach(function (cat) {
-           const html = 
-
-           "<tr><td>" + cat.id +
-           "</td><td>" + "$" + cat.toilet_paper +
-           "</td><td>" + "$" + cat.diapers +
-           "</td><td>" + "$" + cat.dental_hygiene +
-           "</td><td>" + "$" + cat.first_aid +
-           "</td><td>" + "$" + cat.general_hygiene +
-           "</td><td>" + "$" + cat.underwear_socks +
-           "</td><td>" + "$" + cat.blankets +
-           "</td><td>" + "$" + cat.school_supplies +
-           "</td></tr>"
-
-           $("#totalDonationTable").find('tbody').append(html);
+            const allCategories = new Category(cat)
+            const categoryHTML = allCategories.formatCategories()
+            $("#totalDonationTable").find('tbody').append(categoryHTML);
             });
         });
     });
+
+  function Category(category) {
+        this.id = category.id
+        this.toilet_paper = category.toilet_paper
+        this.diapers = category.diapers
+        this.dental_hygiene = category.dental_hygiene
+        this.first_aid = category.first_aid
+        this.general_hygiene = category.general_hygiene
+        this.underwear_socks = category.underwear_socks
+        this.blankets = category.blankets
+        this.school_supplies = category.school_supplies
+    }
+
+  Category.prototype.formatCategories = function() {
+         const html = 
+
+           "<tr><td>" + this.id +
+           "</td><td>" + "$" + this.toilet_paper +
+           "</td><td>" + "$" + this.diapers +
+           "</td><td>" + "$" + this.dental_hygiene +
+           "</td><td>" + "$" + this.first_aid +
+           "</td><td>" + "$" + this.general_hygiene +
+           "</td><td>" + "$" + this.underwear_socks +
+           "</td><td>" + "$" + this.blankets +
+           "</td><td>" + "$" + this.school_supplies +
+           "</td></tr>"
+
+            return html
+    }
+
+
+
 });
+
+
 
 
 

@@ -2,7 +2,6 @@ $(document).ready(function () {
 
   $(".js-next-recipient").click(function() {
   	const recipientId = parseInt($(this).attr("data-id"));
-  	console.log(recipientId);
     $.get("/recipients/" + recipientId + "/next", function(recipient) {
     	$("#firstName").text(recipient["first_name"]);
     	$("#lastName").text(recipient["last_name"]);
@@ -15,8 +14,7 @@ $(document).ready(function () {
 
 
   $(".js-show-category").one('click', function() {
-    const categoryId = parseInt($(this).attr("data-id"))
-    console.log(categoryId);
+    const categoryId = parseInt($(this).attr("data-id"));
      $.get("/recipients/" + categoryId + ".json", function(recipient) {
       const html = 
 
@@ -34,6 +32,16 @@ $(document).ready(function () {
       $("#recipientDonations").find('tbody').append(html);
         });
     });
+
+    function Recipient(recipient) {
+      this.id = recipient.id
+      this.first_name = recipient.first_name
+      this.last_name = recipient.last_name
+      this.location = recipient.location
+      this.gender = recipient.gender
+      this.personal_notes = recipient.personal_notes
+    }
+
 });
 
 
