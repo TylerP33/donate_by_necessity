@@ -34,7 +34,7 @@ class RecipientsController < ApplicationController
 		@recipient[:donor_id] = current_user.id
 		@recipient[:id] = @category.id
 		if @recipient.save
-			 redirect_to donor_interface_path, notice: 'Recipient was successfully created.'
+			 render json: @recipient, status: 201
 		else
 			 render :_form
 		end
