@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+// "NEXT" recipient formatting
+
   $(".js-next-recipient").click(function() {
   	const recipientId = parseInt($(this).attr("data-id"));
     $.get("/recipients/" + recipientId + "/next", function(rec) {
@@ -8,17 +10,7 @@ $(document).ready(function () {
         });
     });
 
-
-    $(".js-show-category").one('click', function() {
-    const categoryId = parseInt($(this).attr("data-id"));
-     $.get("/recipients/" + categoryId + ".json", function(cat) {
-      const category = new RecipientCategory(cat)
-      const catHTML =  category.formatRecipientsCategory()
-      $("#recipientDonations").find('tbody').append(catHTML);
-        });
-    });
-
-    function Recipient(recipient) {
+  function Recipient(recipient) {
       this.id = recipient.id
       this.first_name = recipient.first_name
       this.last_name = recipient.last_name
@@ -36,7 +28,18 @@ $(document).ready(function () {
       $(".js-next-recipient").attr("data-id", this.id);
     }
 
-  function RecipientCategory(recipient) {
+// "has_many" relationship - shows a Recipients category!
+
+    $(".js-show-category").one('click', function() {
+    const categoryId = parseInt($(this).attr("data-id"));
+     $.get("/recipients/" + categoryId + ".json", function(cat) {
+      const category = new RecipientCategory(cat)
+      const catHTML =  category.formatRecipientsCategory()
+      $("#recipientDonations").find('tbody').append(catHTML);
+        });
+    });
+
+    function RecipientCategory(recipient) {
       this.id = recipient["category"]["id"]
       this.toilet_paper = recipient["category"]["toilet_paper"]
       this.diapers = recipient["category"]["diapers"]
@@ -47,8 +50,6 @@ $(document).ready(function () {
       this.blankets = recipient["category"]["blankets"]
       this.school_supplies = recipient["category"]["school_supplies"]
     }
-
-
 
     RecipientCategory.prototype.formatRecipientsCategory = function () {
       const html = 

@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+// Uses Cat.all (index resource) to display all donations on total_user_donations route
+
   $(".js-all-donations").one('click', function() {
     $.get("/categories.json", function(category) {
         category.forEach(function (cat) {
