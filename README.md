@@ -1,3 +1,5 @@
+# Welcome to Donate By Necessity!
+
 # README
 
 An application that acts as a donation interface for individual recipients based on the some very basic, and crucial needs.
