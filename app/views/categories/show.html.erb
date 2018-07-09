@@ -1,7 +1,40 @@
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    table-layout:fixed;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+</style>
+</head>
+</html>
+
 <h2>Recipient Form</h2>
 
-<%= form_for([@category, @recipient]) do |f| %>
+<%= form_for([@category, @recipient], html:{class: 'new_rec_form'}) do |f| %>
 <%= render 'recipients/form', f: f %>
 <% end %>
 
 <p>Note:  To skip adding a recipient to your donation, please return to your Donor Platform</p>
+<br>
+<br>
+<strong>Here is your new recipient</strong>
+<br>
+<br>
+<table id="newRecTable" style="width:100%">
+	<tr>
+		<th>ID</th>
+		<th>First Name</th>
+    	<th>Last Name</th>
+    	<th>Location</th>
+    	<th>Gender</th>
+    	<th>Personal Notes</th>
+	</tr>
+</table>
+<br>
+<br>
