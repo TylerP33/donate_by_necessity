@@ -2,25 +2,39 @@ $(document).ready(function () {
 
   $(".js-next-recipient").click(function() {
   	const recipientId = parseInt($(this).attr("data-id"));
-    $.get("/recipients/" + recipientId + "/next", function(recipient) {
-    	$("#firstName").text(recipient["first_name"]);
-    	$("#lastName").text(recipient["last_name"]);
-    	$("#location").text(recipient["location"]);
-      $("#gender").text(recipient["gender"]);
-      $("#personalNotes").text(recipient["personal_notes"]);
-      $(".js-next-recipient").attr("data-id", recipient["id"]);
+    $.get("/recipients/" + recipientId + "/next", function(rec) {
+      const recipient = new Recipient(rec)
+    	const recHTML = recipient.formatRecipients()
         });
     });
-  
+
 
     $(".js-show-category").one('click', function() {
     const categoryId = parseInt($(this).attr("data-id"));
-     $.get("/recipients/" + categoryId + ".json", function(rec) {
-      const recipient = new RecipientCategory(rec)
-      const recHTML =  recipient.formatRecipientsCategory()
-      $("#recipientDonations").find('tbody').append(recHTML);
+     $.get("/recipients/" + categoryId + ".json", function(cat) {
+      const category = new RecipientCategory(cat)
+      const catHTML =  category.formatRecipientsCategory()
+      $("#recipientDonations").find('tbody').append(catHTML);
         });
     });
+
+    function Recipient(recipient) {
+      this.id = recipient.id
+      this.first_name = recipient.first_name
+      this.last_name = recipient.last_name
+      this.location = recipient.location
+      this.gender = recipient.gender
+      this.personal_notes = recipient.personal_notes
+    }
+
+    Recipient.prototype.formatRecipients = function () {
+      $("#firstName").text(this.first_name);
+      $("#lastName").text(this.last_name);
+      $("#location").text(this.location);
+      $("#gender").text(this.gender);
+      $("#personalNotes").text(this.personal_notes);
+      $(".js-next-recipient").attr("data-id", this.id);
+    }
 
   function RecipientCategory(recipient) {
       this.id = recipient["category"]["id"]
