@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
-// "POST" new recipient on recipient form page
+// "POST" newly created recipient on "show page"
+// Better described as page with recipient form
 
 $(function () {
     $(".new_rec_form").submit(function(event) {
@@ -16,7 +17,7 @@ $(function () {
     });
   });
 
-// "NEXT" recipient formatting
+// "NEXT" functionality - user can flip through all recipients on one page
 
   $(".js-next-recipient").click(function() {
   	const recipientId = parseInt($(this).attr("data-id"));
@@ -58,7 +59,8 @@ $(function () {
       $(".js-next-recipient").attr("data-id", this.id);
     }
 
-// "has_many" relationship - shows a Recipients category!
+// "has_many" relationship - shows a Recipients category!  
+// post the amount/category of donation below Recipients show page!
 
     $(".js-show-category").one('click', function() {
     const categoryId = parseInt($(this).attr("data-id"));
