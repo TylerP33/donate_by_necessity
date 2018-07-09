@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(() => {
 
 // "POST" newly created recipient on "show page"
 // Better described as page with recipient form
@@ -8,7 +8,7 @@ $(function () {
       event.preventDefault();
       const values = $(this).serialize();
       const form = $.post(`${this.action}`, values);
-      form.done(function(rec) {
+      form.done( (rec) => {
         console.log(rec);
         const newRec = new Recipient(rec)
         const recHTML = newRec.customRecTable()
@@ -21,7 +21,7 @@ $(function () {
 
   $(".js-next-recipient").click(function() {
   	const recipientId = parseInt($(this).attr("data-id"));
-    $.get("/recipients/" + recipientId + "/next", function(rec) {
+    $.get("/recipients/" + recipientId + "/next", (rec) => {
       const recipient = new Recipient(rec)
     	const recHTML = recipient.formatRecipients()
         });
@@ -64,7 +64,7 @@ $(function () {
 
     $(".js-show-category").one('click', function() {
     const categoryId = parseInt($(this).attr("data-id"));
-     $.get("/recipients/" + categoryId + ".json", function(cat) {
+     $.get("/recipients/" + categoryId + ".json", (cat) => {
       const category = new RecipientCategory(cat)
       const catHTML =  category.formatRecipientsCategory()
       $("#recipientDonations").find('tbody').append(catHTML);
