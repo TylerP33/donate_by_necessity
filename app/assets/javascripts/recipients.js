@@ -1,24 +1,20 @@
 $(document).ready(function () {
 
+// "POST" new recipient on recipient form page
+
 $(function () {
-    $("form").submit(function(catRec) {
-      //prevent form from submitting the default way
-    
+    $(".new_rec_form").submit(function(event) {
+      event.preventDefault();
       const values = $(this).serialize();
-
-      const form = $.post('/categories', values);
-
-      form.done(function(data) {
-        console.log(data);
-        $("#hello").text("suck it")
+      const form = $.post(`${this.action}`, values);
+      form.done(function(rec) {
+        console.log(rec);
+        const newRec = new Recipient(rec)
+        const recHTML = newRec.customRecTable()
+        $("#newRecTable").find('tbody').append(recHTML);
       })
     });
   });
-
-
-
-
-
 
 // "NEXT" recipient formatting
 
@@ -37,6 +33,20 @@ $(function () {
       this.location = recipient.location
       this.gender = recipient.gender
       this.personal_notes = recipient.personal_notes
+    }
+
+  Recipient.prototype.customRecTable = function () {
+             const newHTML = 
+
+           "<tr><td>" + this.id +
+           "</td><td>" + this.first_name +
+           "</td><td>" + this.last_name +
+           "</td><td>" + this.location +
+           "</td><td>" + this.gender +
+           "</td><td>" + this.personal_notes +
+           "</td></tr>"
+
+            return newHTML
     }
 
     Recipient.prototype.formatRecipients = function () {
