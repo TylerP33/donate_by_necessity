@@ -1,5 +1,25 @@
 $(document).ready(function () {
 
+$(function () {
+    $("form").submit(function(catRec) {
+      //prevent form from submitting the default way
+    
+      const values = $(this).serialize();
+
+      const form = $.post('/categories', values);
+
+      form.done(function(data) {
+        console.log(data);
+        $("#hello").text("suck it")
+      })
+    });
+  });
+
+
+
+
+
+
 // "NEXT" recipient formatting
 
   $(".js-next-recipient").click(function() {
@@ -53,7 +73,6 @@ $(document).ready(function () {
 
     RecipientCategory.prototype.formatRecipientsCategory = function () {
       const html = 
-
       "<tr><td>" + this.id +
       "</td><td>" + "$" + this.toilet_paper +
       "</td><td>" + "$" + this.diapers +
@@ -64,9 +83,7 @@ $(document).ready(function () {
       "</td><td>" + "$" + this.blankets +
       "</td><td>" + "$" + this.school_supplies +
       "</td></tr>"
-
       return html
-
     }
 
 
