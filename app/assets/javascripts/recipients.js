@@ -29,33 +29,33 @@ $(function () {
 
   function Recipient(recipient) {
       this.id = recipient.id
-      this.first_name = recipient.first_name
-      this.last_name = recipient.last_name
+      this.firstName = recipient.first_name
+      this.lastName = recipient.last_name
       this.location = recipient.location
       this.gender = recipient.gender
-      this.personal_notes = recipient.personal_notes
+      this.personalNotes = recipient.personal_notes
     }
 
   Recipient.prototype.customRecTable = function () {
              const newHTML = 
 
-           "<tr><td>" + this.id +
-           "</td><td>" + this.first_name +
-           "</td><td>" + this.last_name +
+           "<tr><td>" +  this.id +
+           "</td><td>" + this.firstName +
+           "</td><td>" + this.lastName +
            "</td><td>" + this.location +
            "</td><td>" + this.gender +
-           "</td><td>" + this.personal_notes +
+           "</td><td>" + this.personalNotes +
            "</td></tr>"
 
             return newHTML
     }
 
     Recipient.prototype.formatRecipients = function () {
-      $("#firstName").text(this.first_name);
-      $("#lastName").text(this.last_name);
+      $("#firstName").text(this.firstName);
+      $("#lastName").text(this.lastName);
       $("#location").text(this.location);
       $("#gender").text(this.gender);
-      $("#personalNotes").text(this.personal_notes);
+      $("#personalNotes").text(this.personalNotes);
       $(".js-next-recipient").attr("data-id", this.id);
     }
 

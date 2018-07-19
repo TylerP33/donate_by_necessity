@@ -3,10 +3,17 @@ $(() => {
 // Uses Cat.all (index resource) to display all donations on total_user_donations route
 
   $(".js-all-donations").one('click', function() {
-    $.get("/categories.json", (category) => {
-        category.forEach(function (cat) {
-            const allCategories = new Category(cat)
-            const categoryHTML = allCategories.formatCategories()
+    $.get("/categories.json", (categories) => {
+
+//non-stack overflow answer that I came up with
+
+      categories.sort(function(a, b) {
+            return a.first_aid - b.first_aid
+      })
+
+      categories.reverse().forEach(function (cat) {
+            const newCategory = new Category(cat)
+            const categoryHTML = newCategory.formatCategories()
             $("#totalDonationTable").find('tbody').append(categoryHTML);
             });
         });
@@ -14,35 +21,43 @@ $(() => {
 
   function Category(category) {
         this.id = category.id
-        this.toilet_paper = category.toilet_paper
+        this.toiletPaper = category.toilet_paper
         this.diapers = category.diapers
-        this.dental_hygiene = category.dental_hygiene
-        this.first_aid = category.first_aid
-        this.general_hygiene = category.general_hygiene
-        this.underwear_socks = category.underwear_socks
+        this.dentalHygiene = category.dental_hygiene
+        this.firstAid = category.first_aid
+        this.generalHygiene = category.general_hygiene
+        this.underwearSocks = category.underwear_socks
         this.blankets = category.blankets
-        this.school_supplies = category.school_supplies
+        this.schoolSupplies = category.school_supplies
     }
 
   Category.prototype.formatCategories = function() {
          const html = 
 
            "<tr><td>" + this.id +
-           "</td><td>" + "$" + this.toilet_paper +
+           "</td><td>" + "$" + this.toiletPaper +
            "</td><td>" + "$" + this.diapers +
-           "</td><td>" + "$" + this.dental_hygiene +
-           "</td><td>" + "$" + this.first_aid +
-           "</td><td>" + "$" + this.general_hygiene +
-           "</td><td>" + "$" + this.underwear_socks +
+           "</td><td>" + "$" + this.dentalHygiene +
+           "</td><td>" + "$" + this.firstAid +
+           "</td><td>" + "$" + this.generalHygiene +
+           "</td><td>" + "$" + this.underwearSocks +
            "</td><td>" + "$" + this.blankets +
-           "</td><td>" + "$" + this.school_supplies +
+           "</td><td>" + "$" + this.schoolSupplies +
            "</td></tr>"
 
             return html
     }
 
-
-
+     $(".js-first-aid-only").one('click', function() {
+    $.get("/categories.json", (categories) => {
+         const cat = categories.filter(cat => cat.first_aid > 0 )
+         cat.forEach(function(cat) {
+            const newFirstAid = new Category(cat)
+            const categoryHTML = newFirstAid.formatCategories()
+            $("#firstAidOnly").find('tbody').append(categoryHTML);
+      });
+    });
+  });
 });
 
 
