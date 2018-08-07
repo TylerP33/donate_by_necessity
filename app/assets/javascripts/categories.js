@@ -1,17 +1,29 @@
 $(() => {
 
-// Uses Cat.all (index resource) to display all donations on total_user_donations route
+  // Uses Cat.all (index resource) to display all donations on total_user_donations route
 
   $(".js-all-donations").one('click', function() {
     $.get("/categories.json", (categories) => {
 
-//non-stack overflow answer that I came up with
-
       categories.sort(function(a, b) {
-            return a.first_aid - b.first_aid
-      })
+          // if (a.first_aid > b.first_aid )
+            // return -1
 
-      categories.reverse().forEach(function (cat) {
+    // -1 = a goes first if larger
+          // if (a.first_aid < b.first_aid )
+            // return 1
+            return b.first_aid - a.first_aid
+
+        })
+
+    //non-stack overflow answer that I came up with
+
+
+    // categories.sort(function(a, b) {
+    //    return a.first_aid - b.first_aid
+    //  })
+
+      categories.forEach(function (cat) {
             const newCategory = new Category(cat)
             const categoryHTML = newCategory.formatCategories()
             $("#totalDonationTable").find('tbody').append(categoryHTML);
@@ -50,6 +62,7 @@ $(() => {
 
      $(".js-first-aid-only").one('click', function() {
     $.get("/categories.json", (categories) => {
+      console.log(categories);
          const cat = categories.filter(cat => cat.first_aid > 0 )
          cat.forEach(function(cat) {
             const newFirstAid = new Category(cat)
